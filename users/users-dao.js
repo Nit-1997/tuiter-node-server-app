@@ -1,3 +1,5 @@
+import {v5 as uuid , stringify} from 'uuid';
+
 let users = [];
 
 
@@ -26,15 +28,25 @@ export const findUserByCredentials = (username, password) => {
 
 
 export const createUser = (user) => {
+    const MY_NAMESPACE = '1b671a64-40d5-491e-99b0-da01ff1f3341';
+    user._id =  uuid(Date.now().toString(),MY_NAMESPACE)
+    console.log(user._id);
     users.push(user);
     return user;
 }
 
 
-export const updateUser = (uid, user) => {
-    const index = users.findIndex((u) => u._id === uid);
+export const updateUser = (user) => {
+    console.log(users)
+    console.log(user)
+    const index = users.findIndex((u) => u._id.toString() === user._id.toString());
+    console.log("Found user at index "+index)
     users[index] = { ...users[index], ...user };
-    return {status: 'ok'}
+    console.log("User after update")
+    console.log(users[index])
+    return {status: 'ok',
+         user: users[index]
+    }
 };
 export const deleteUser = (uid) => {
     const index = users.findIndex((u) => u._id === uid);

@@ -1,4 +1,5 @@
 import * as usersDao from "./users-dao.js";
+import users from "./users.js";
 
 
 const AuthController = (app) => {
@@ -29,7 +30,10 @@ const AuthController = (app) => {
     const profile = (req, res) => {
         console.log("RECIEVED RQ for PROFILE")
         console.log("RQ Body")
-        console.log(req)
+        console.log(req.body)
+        console.log("RQ Session")
+        console.log(req.session)
+
         const currentUser = req.session["currentUser"];
         if (!currentUser) {
             res.sendStatus(404);
@@ -43,7 +47,23 @@ const AuthController = (app) => {
         res.sendStatus(200);
     };
 
-    const update   = (req, res) => { };
+    const update   = (req, res) => {
+        console.log("RECIEVED RQ for Update user")
+        console.log("RQ Body")
+        console.log(req.body)
+        console.log("RQ Session")
+        console.log(req.session)
+        const currentUser = req.session["currentUser"];
+        if(currentUser === undefined){
+            res.sendStatus(401);
+        }
+        let response = usersDao.updateUser(req.body);
+        if(response.status === 'ok'){
+            res.json(response.user)
+        }else{
+            res.sendStatus(500)
+        }
+    };
 
 
     app.post("/api/users/register", register);
