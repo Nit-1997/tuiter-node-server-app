@@ -10,6 +10,7 @@ export default [
         "replies": 123,
         "retuits": 432,
         "likes": 145,
+        "dislikes" : 103,
         "handle": "@spacex",
         "tuit": "You want to wake up in the morning and think the future is going to be great - and that’s what being a spacefaring civilization is all about. It’s about believing in the future and thinking that the future will be better than the past. And I can’t think of anything more exciting than going out there and being among the stars"
 
@@ -25,6 +26,7 @@ export default [
         "replies": 123,
         "retuits": 432,
         "likes": 124,
+        "dislikes" : 123,
         "handle": "@spacex",
         "tuit": "You want to wake up in the morning and think the future is going to be great - and that’s what being a spacefaring civilization is all about. It’s about believing in the future and thinking that the future will be better than the past. And I can’t think of anything more exciting than going out there and being among the stars"
     },
@@ -39,6 +41,7 @@ export default [
         "replies": 123,
         "retuits": 432,
         "likes": 16,
+        "dislikes" : 13,
         "handle": "@spacex",
         "tuit": "You want to wake up in the morning and think the future is going to be great - and that’s what being a spacefaring civilization is all about. It’s about believing in the future and thinking that the future will be better than the past. And I can’t think of anything more exciting than going out there and being among the stars"
     }

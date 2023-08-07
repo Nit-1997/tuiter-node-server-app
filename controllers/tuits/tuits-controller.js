@@ -1,11 +1,14 @@
 import posts from "./tuits.js";
+import {v5 as uuid} from "uuid";
 let tuits = posts;
 
 const findTuits = (req, res) => res.json(tuits)
 const createTuit = (req, res) => {
     const newTuit = req.body
-    newTuit._id = (new Date()).getTime()+''
+    const MY_NAMESPACE = '1b671a64-40d5-491e-99b0-da01ff1f3341';
+    newTuit._id =  uuid(Date.now().toString(),MY_NAMESPACE)
     newTuit.likes = 0
+    newTuit.dislikes = 0
     newTuit.liked = false
     newTuit.image = "tesla.png"
     newTuit.title = newTuit.tuit;
@@ -19,7 +22,7 @@ const createTuit = (req, res) => {
 const updateTuit = (req, res) => {
     const tuitdId = req.params.tid;
     const updates = req.body;
-    const tuitIndex = tuits.findIndex((t) => t._id === tuitdId)
+    const tuitIndex = tuits.findIndex((t) => t._id.toString() === tuitdId.toString())
     tuits[tuitIndex] = {...tuits[tuitIndex], ...updates};
     res.sendStatus(200);
 }
