@@ -20,6 +20,8 @@ const createTuit = async (req, res) => {
 }
 
 const updateTuit = async (req, res) => {
+    console.log(req.params.tid);
+    console.log(req.body);
     const tuitdId = req.params.tid;
     const updates = req.body;
     const status = await tuitsDao

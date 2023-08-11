@@ -44,11 +44,13 @@ const AuthController = (app) => {
     };
 
     const update = (req, res) => {
+        console.log(req.body);
         const currentUser = req.session["currentUser"];
         if (currentUser === undefined) {
             res.sendStatus(401);
         }
-        let response = usersDao.updateUser(req.body);
+        let response = usersDao.updateUser(req.body._id , req.body);
+
         if (response.status === 'ok') {
             res.json(response.user)
         } else {
